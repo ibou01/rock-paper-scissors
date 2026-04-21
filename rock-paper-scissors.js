@@ -10,3 +10,8 @@ function getComputerChoice () {
         return "scissors";
     }
 }
+
+function getHumanChoice (){
+    let choice = prompt ("what is your choice? ");
+    return choice;
+}
