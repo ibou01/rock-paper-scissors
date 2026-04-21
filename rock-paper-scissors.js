@@ -3,10 +3,10 @@ let computerScore = 0;
 
 function getComputerChoice () {
     let randomNumber = Math.random ();
-    if(0<=randomNumber<1/3){
+    if(randomNumber<1/3){
         return "rock";
     }
-    else if(1/3<=randomNumber<2/3){
+    else if(randomNumber<2/3){
         return "paper";
     }
     else {
@@ -18,3 +18,51 @@ function getHumanChoice (){
     let choice = prompt ("what is your choice? ");
     return choice;
 }
+
+function playRound(humanChoice, computerChoice){
+ humanChoice = humanChoice.toLowerCase();
+ 
+   if(humanChoice===computerChoice){
+        console.log("It's a tie!");
+        return;
+   }
+
+   else if(humanChoice==="paper"){
+        if(computerChoice==="rock"){
+            console.log("You win! Paper beats Rock");
+            humanScore++;
+        }
+        else if(computerChoice==="scissors"){
+            console.log("You lose! Scissors beat Paper");
+            computerScore++;
+        }
+   }
+
+   else if(humanChoice==="rock"){
+        if(computerChoice==="paper"){
+            console.log("You lose! Paper beats Rock");
+            computerScore++;
+        }
+        else if(computerChoice==="scissors"){
+            console.log("You win! Rock beats Scissors");
+            humanScore++;
+        }
+        
+   }
+
+   else if(humanChoice==="scissors"){
+        if(computerChoice==="paper"){
+            console.log("You win! Scissors beat Paper");
+            humanScore++;
+        }
+        else if(computerChoice==="rock"){
+            console.log("You lose! Rock beats Scissors");
+            computerScore++;
+        }
+   }
+} 
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
